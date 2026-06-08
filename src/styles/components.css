@@ -1,0 +1,370 @@
+/* Buttons — min-height ensures 44px tap target on all viewports */
+.btn-primary {
+  display: inline-block;
+  background: var(--color-cta);
+  color: #fff;
+  border: none;
+  padding: 13px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition);
+  font-family: var(--font-main);
+  min-height: 44px;
+}
+.btn-primary:hover { background: var(--color-cta-hover); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  padding: 12px 26px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition);
+  font-family: var(--font-main);
+  min-height: 44px;
+}
+.btn-outline:hover { background: var(--color-primary-pale); }
+
+.btn-whatsapp {
+  display: inline-block;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  padding: 11px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-main);
+  min-height: 44px;
+}
+
+/* Cards */
+.card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition), transform var(--transition);
+}
+.card:hover {
+  border-color: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+.badge-teal { background: var(--color-primary-pale); color: var(--color-primary); }
+.badge-amber { background: var(--color-cta-light); color: var(--color-cta); }
+.badge-warm { background: var(--color-bg-subtle); color: var(--color-text-secondary); }
+
+/* ─── Navbar ─────────────────────────────────────────────────────────────── */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg-white);
+  border-bottom: 1px solid var(--color-border);
+}
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.navbar-logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Hidden on mobile; drawer handles navigation */
+.navbar-links {
+  display: none;
+  gap: 32px;
+  list-style: none;
+}
+.navbar-links a {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+.navbar-links a:hover { color: var(--color-primary); }
+
+/* Desktop admissions CTA — hidden on mobile, drawer has the link */
+.navbar-links + a { display: none; }
+
+/* Hamburger visible by default on mobile */
+.navbar-hamburger {
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-direction: column;
+  gap: 5px;
+  /* 44px tap target */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text-primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.navbar-drawer {
+  display: none;
+  position: fixed;
+  top: 64px;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  background: var(--color-bg-white);
+  border-left: 1px solid var(--color-border);
+  padding: 24px;
+  z-index: 99;
+  flex-direction: column;
+  gap: 0;
+}
+.navbar-drawer a {
+  display: block;
+  padding: 14px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border);
+}
+body.nav-open .navbar-drawer { display: flex; }
+body.nav-open .nav-overlay { display: block; }
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 98;
+}
+
+/* At 768px+ show desktop nav, hide hamburger */
+@media (min-width: 768px) {
+  .navbar-links { display: flex; }
+  .navbar-links + a { display: inline-block; }
+  .navbar-hamburger { display: none; }
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+
+.footer {
+  background: #1A1A1A;
+  color: #A0A0A0;
+  padding: 60px 0 32px;
+}
+
+/* Single column on mobile */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.footer h4 {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.footer a {
+  display: block;
+  color: #A0A0A0;
+  text-decoration: none;
+  font-size: 0.88rem;
+  line-height: 2.2;
+  transition: color var(--transition);
+}
+.footer a:hover { color: var(--color-primary-light); }
+
+/* Stacked and centred on mobile */
+.footer-bottom {
+  border-top: 1px solid #2A2A2A;
+  padding-top: 24px;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .footer-bottom { flex-direction: row; text-align: left; }
+}
+
+/* ─── WhatsApp sticky bar ─────────────────────────────────────────────────── */
+
+.sticky-wa {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  gap: 12px;
+}
+.sticky-wa p { font-size: 0.9rem; font-weight: 500; }
+
+/* 44px tap target for dismiss button */
+.sticky-wa-dismiss {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-left: 8px;
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Lead modal ──────────────────────────────────────────────────────────── */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  width: 100%;
+  max-width: 460px;
+  margin: 16px;
+  position: relative;
+}
+
+/* 44px tap target for close button */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--color-border);
+}
+.modal-tab {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-family: var(--font-main);
+  transition: color var(--transition);
+  min-height: 44px;
+}
+.modal-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+.modal-panel { display: none; }
+.modal-panel.active { display: block; }
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-text-secondary);
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: var(--font-main);
+  color: var(--color-text-primary);
+  background: var(--color-bg-white);
+  transition: border-color var(--transition);
+  min-height: 44px;
+}
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+.form-note {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 12px;
+}
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 24px 0;
+}
+.form-success h3 {
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}

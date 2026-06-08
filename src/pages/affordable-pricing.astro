@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Affordable Pricing & Plans | Jyoti Girls PG"
+  description="Compare room tariffs, inclusions, and add-on services at Jyoti Girls PG near Osmanpura. Transparent pricing for parents and students."
+>
+
+  <section style="padding: 60px 0 40px; background: var(--color-bg-base);">
+    <div class="container">
+      <span class="section-eyebrow">Girls PG near Osmanpura</span>
+      <h1 class="section-heading">Affordable Pricing &amp; Plans</h1>
+      <p class="section-lead">Jyoti Girls PG offers transparent tariffs so parents know exactly what their investment covers.</p>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <span class="section-eyebrow">Simple, transparent pricing</span>
+      <h2 class="section-heading">Two plans — one for privacy, one for value</h2>
+      <div class="pricing-grid">
+        <div class="card pricing-card featured">
+          <span class="badge badge-teal">Twin sharing</span>
+          <div class="pricing-price">₹5,000</div>
+          <div class="pricing-period">per month</div>
+          <p class="pricing-desc">1 room · 2 beds · more privacy</p>
+          <ul class="pricing-features">
+            <li>More personal space</li>
+            <li>Only one roommate</li>
+            <li>Quieter environment</li>
+            <li>Airy rooms with large windows</li>
+            <li>All amenities included</li>
+          </ul>
+          <button class="btn-outline" data-modal="availability" style="width:100%;">Check availability</button>
+        </div>
+        <div class="card pricing-card">
+          <span class="badge badge-warm">Standard sharing</span>
+          <div class="pricing-price">₹2,999</div>
+          <div class="pricing-period">per month</div>
+          <p class="pricing-desc">2 rooms · 3–4 beds · best value</p>
+          <ul class="pricing-features">
+            <li>Great value for students</li>
+            <li>Lively, social environment</li>
+            <li>Full amenities included</li>
+            <li>Most popular choice</li>
+            <li>Ideal for junior college entrants</li>
+          </ul>
+          <button class="btn-primary" data-modal="availability" style="width:100%;">Check availability</button>
+        </div>
+      </div>
+      <p class="pricing-note">*Security deposit equals one month's rent and is fully refundable subject to property condition. Prices exclude meals.</p>
+    </div>
+  </section>
+
+  <section style="background: var(--color-bg-white);">
+    <div class="container">
+      <h2 class="section-heading">What Every Plan Includes</h2>
+      <ul style="padding-left:20px;max-width:600px;">
+        <li style="color:var(--color-text-secondary);margin-bottom:10px;">High-speed Wi-Fi, power backup, and purified drinking water.</li>
+        <li style="color:var(--color-text-secondary);margin-bottom:10px;">24x7 caretaker supervision and CCTV monitoring.</li>
+        <li style="color:var(--color-text-secondary);margin-bottom:10px;">Complimentary housekeeping and maintenance support.</li>
+        <li style="color:var(--color-text-secondary);margin-bottom:10px;">Dedicated locker for valuables and personal storage.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section style="background: var(--color-bg-subtle);">
+    <div class="container">
+      <h2 class="section-heading">Optional Add-Ons</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+        <div class="card">
+          <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px;">Exam Bootcamps</h3>
+          <p style="font-size:0.88rem;color:var(--color-text-secondary);">Intensive weekend sessions with visiting faculty from Osmanpura institutes. ₹1,200 per camp.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px;">Airport Pickup</h3>
+          <p style="font-size:0.88rem;color:var(--color-text-secondary);">Safe airport or railway transfers for outstation students. ₹1,500 per trip.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px;">Parent Stay Suite</h3>
+          <p style="font-size:0.88rem;color:var(--color-text-secondary);">Furnished guest room for short parental visits, subject to availability. ₹800 per night.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--color-bg-white);">
+    <div class="container">
+      <div class="card" style="background:var(--color-primary-pale);border-color:var(--color-primary-light);max-width:640px;">
+        <h2 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Get a Personalised Quote</h2>
+        <p style="color:var(--color-text-secondary);margin-bottom:20px;">Share your daughter's course, preferred room type, and joining date to receive a customised payment plan with available offers.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="btn-primary" data-modal="availability">Check availability</button>
+          <a href="https://wa.me/919922333305?text=Hello%20Jyoti%20Girls%20PG%2C%20please%20share%20your%20pricing%20details." class="btn-whatsapp" target="_blank" rel="noopener noreferrer">Request pricing on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
