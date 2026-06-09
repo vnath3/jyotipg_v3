@@ -44,16 +44,24 @@ async function submitForm(formId, successId, formType) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form));
     const utms = getUTMParams();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
     try {
       await fetch('/.netlify/functions/submit-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...data, ...utms, form_type: formType, tenant: 'jyoti-pg' })
       });
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
       form.style.display = 'none';
       document.getElementById(successId).style.display = 'block';
       if (typeof gtag !== 'undefined') gtag('event', 'form_submit', { form_type: formType });
     } catch(err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
       console.error('Form error:', err);
     }
   });
