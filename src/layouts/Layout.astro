@@ -4,12 +4,14 @@ export interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  schema?: string;
 }
 const {
   title,
   description,
   canonical = Astro.url.href,
-  ogImage = '/images/Jyoti_PG_Front.jpg'
+  ogImage = '/images/Jyoti_PG_Front.jpg',
+  schema,
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -24,6 +26,7 @@ const {
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:type" content="website" />
+  {schema && <Fragment set:html={schema} />}
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="/styles/base.css" />
   <link rel="stylesheet" href="/styles/components.css" />
@@ -84,6 +87,8 @@ const {
           <a href="/meals-and-facilities">Meals & Facilities</a>
           <a href="/admissions-contact">Admissions</a>
           <a href="/girls-pg-near-deogiri-college-osmanpura">Near Deogiri College</a>
+          <a href="/girls-pg-near-diems-osmanpura">Near DIEMS Engineering</a>
+          <a href="/osmanpura-student-neighbourhood-guide">Osmanpura Student Guide</a>
         </div>
         <div>
           <h4>Contact</h4>
