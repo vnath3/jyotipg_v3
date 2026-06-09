@@ -46,7 +46,8 @@ a { color: inherit; }
   padding: 0 24px;
 }
 
-section { padding: 80px 0; }
+/* Mobile base — scales up at 768px */
+section { padding: 48px 0; }
 
 .section-eyebrow {
   display: block;
@@ -59,7 +60,7 @@ section { padding: 80px 0; }
 }
 
 .section-heading {
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-primary);
   line-height: 1.25;
@@ -73,7 +74,7 @@ section { padding: 80px 0; }
   margin-bottom: 40px;
 }
 
-@media (max-width: 768px) {
-  section { padding: 48px 0; }
-  .section-heading { font-size: 1.5rem; }
+@media (min-width: 768px) {
+  section { padding: 80px 0; }
+  .section-heading { font-size: 1.9rem; }
 }

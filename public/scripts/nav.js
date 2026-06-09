@@ -6,3 +6,7 @@ function closeNav() { document.body.classList.remove('nav-open'); }
 
 if (hamburger) hamburger.addEventListener('click', openNav);
 if (navOverlay) navOverlay.addEventListener('click', closeNav);
+
+document.querySelectorAll('.navbar-drawer a').forEach(function(link) {
+  link.addEventListener('click', closeNav);
+});

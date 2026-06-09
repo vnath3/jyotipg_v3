@@ -1,4 +1,4 @@
-/* Buttons */
+/* Buttons — min-height ensures 44px tap target on all viewports */
 .btn-primary {
   display: inline-block;
   background: var(--color-cta);
@@ -12,6 +12,7 @@
   text-decoration: none;
   transition: background var(--transition);
   font-family: var(--font-main);
+  min-height: 44px;
 }
 .btn-primary:hover { background: var(--color-cta-hover); }
 
@@ -28,6 +29,7 @@
   text-decoration: none;
   transition: background var(--transition);
   font-family: var(--font-main);
+  min-height: 44px;
 }
 .btn-outline:hover { background: var(--color-primary-pale); }
 
@@ -43,6 +45,7 @@
   cursor: pointer;
   text-decoration: none;
   font-family: var(--font-main);
+  min-height: 44px;
 }
 
 /* Cards */
@@ -71,7 +74,8 @@
 .badge-amber { background: var(--color-cta-light); color: var(--color-cta); }
 .badge-warm { background: var(--color-bg-subtle); color: var(--color-text-secondary); }
 
-/* Navbar */
+/* ─── Navbar ─────────────────────────────────────────────────────────────── */
+
 .navbar {
   position: sticky;
   top: 0;
@@ -94,8 +98,10 @@
   color: var(--color-primary);
   text-decoration: none;
 }
+
+/* Hidden on mobile; drawer handles navigation */
 .navbar-links {
-  display: flex;
+  display: none;
   gap: 32px;
   list-style: none;
 }
@@ -107,14 +113,24 @@
   transition: color var(--transition);
 }
 .navbar-links a:hover { color: var(--color-primary); }
+
+/* Desktop admissions CTA — hidden on mobile, drawer has the link */
+.navbar-links + a { display: none; }
+
+/* Hamburger visible by default on mobile */
 .navbar-hamburger {
-  display: none;
+  display: flex;
   background: none;
   border: none;
   cursor: pointer;
   padding: 4px;
   flex-direction: column;
   gap: 5px;
+  /* 44px tap target */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 .navbar-hamburger span {
   display: block;
@@ -124,6 +140,7 @@
   border-radius: 2px;
   transition: var(--transition);
 }
+
 .navbar-drawer {
   display: none;
   position: fixed;
@@ -157,22 +174,26 @@ body.nav-open .nav-overlay { display: block; }
   z-index: 98;
 }
 
-@media (max-width: 768px) {
-  .navbar-links { display: none; }
-  .navbar-links + a { display: none; }
-  .navbar-hamburger { display: flex; }
+/* At 768px+ show desktop nav, hide hamburger */
+@media (min-width: 768px) {
+  .navbar-links { display: flex; }
+  .navbar-links + a { display: inline-block; }
+  .navbar-hamburger { display: none; }
 }
 
-/* Footer */
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+
 .footer {
   background: #1A1A1A;
   color: #A0A0A0;
   padding: 60px 0 32px;
 }
+
+/* Single column on mobile */
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   margin-bottom: 40px;
 }
 .footer h4 {
@@ -190,23 +211,28 @@ body.nav-open .nav-overlay { display: block; }
   transition: color var(--transition);
 }
 .footer a:hover { color: var(--color-primary-light); }
+
+/* Stacked and centred on mobile */
 .footer-bottom {
   border-top: 1px solid #2A2A2A;
   padding-top: 24px;
   font-size: 0.82rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
+  text-align: center;
 }
 
-@media (max-width: 768px) {
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
+@media (min-width: 768px) {
+  .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .footer-bottom { flex-direction: row; text-align: left; }
 }
 
-/* WhatsApp sticky bar */
+/* ─── WhatsApp sticky bar ─────────────────────────────────────────────────── */
+
 .sticky-wa {
   position: fixed;
   bottom: 0;
@@ -222,6 +248,8 @@ body.nav-open .nav-overlay { display: block; }
   gap: 12px;
 }
 .sticky-wa p { font-size: 0.9rem; font-weight: 500; }
+
+/* 44px tap target for dismiss button */
 .sticky-wa-dismiss {
   background: none;
   border: none;
@@ -230,9 +258,15 @@ body.nav-open .nav-overlay { display: block; }
   cursor: pointer;
   margin-left: 8px;
   flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Lead modal */
+/* ─── Lead modal ──────────────────────────────────────────────────────────── */
+
 .modal-overlay {
   display: none;
   position: fixed;
@@ -252,6 +286,8 @@ body.nav-open .nav-overlay { display: block; }
   margin: 16px;
   position: relative;
 }
+
+/* 44px tap target for close button */
 .modal-close {
   position: absolute;
   top: 16px;
@@ -261,6 +297,11 @@ body.nav-open .nav-overlay { display: block; }
   font-size: 1.4rem;
   cursor: pointer;
   color: var(--color-text-muted);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .modal-tabs {
   display: flex;
@@ -281,6 +322,7 @@ body.nav-open .nav-overlay { display: block; }
   margin-bottom: -2px;
   font-family: var(--font-main);
   transition: color var(--transition);
+  min-height: 44px;
 }
 .modal-tab.active {
   color: var(--color-primary);
@@ -306,6 +348,7 @@ body.nav-open .nav-overlay { display: block; }
   color: var(--color-text-primary);
   background: var(--color-bg-white);
   transition: border-color var(--transition);
+  min-height: 44px;
 }
 .form-group input:focus, .form-group select:focus {
   outline: none;

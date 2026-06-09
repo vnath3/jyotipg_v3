@@ -13,7 +13,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="hero-content">
           <span class="hero-eyebrow">Safe stay · Osmanpura, Sambhaji Nagar</span>
           <h1>A homely, secure PG for girls near Deogiri College</h1>
-          <p class="hero-sub">Twin sharing from ₹5,000 · Standard sharing from ₹2,999 · Walking distance from Deogiri College &amp; coaching centres</p>
+          <p class="hero-sub">Twin sharing from ₹5,000 · Standard sharing from ₹2,999 · Walking distance from Deogiri College &amp; DIEMS engineering college</p>
           <div class="hero-buttons">
             <button class="btn-primary" data-modal="availability">Check availability</button>
             <button class="btn-outline" data-modal="visit">Schedule a tour</button>
@@ -184,7 +184,7 @@ import Layout from '../layouts/Layout.astro';
             <span class="faq-chevron">▼</span>
           </button>
           <div class="faq-answer">
-            <p>We offer twin sharing and standard sharing rooms. Twin sharing is ₹5,000/month (2 beds, more privacy). Standard sharing is ₹2,999/month (3–4 beds, best value). Prices exclude meals.</p>
+            <p>We offer two plans. Twin sharing (1 room, 2 beds) is ₹5,000 per month — ideal for students who prefer more privacy. Standard sharing (3–4 beds per room) is ₹2,999 per month — our most popular, best-value option. Both plans exclude meals. A nearby tiffin service is available.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -232,20 +232,25 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <span class="section-eyebrow">Find us easily</span>
       <h2 class="section-heading">0.8 km from Deogiri College, Osmanpura</h2>
-      <div id="map"></div>
+      <div id="map" style="height: 380px; border-radius: 10px; z-index: 1;"></div>
     </div>
   </section>
 
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function () {
       if (typeof L === 'undefined') return;
-      const map = L.map('map').setView([19.864283, 75.332836], 15);
+      var map = L.map('map').setView([19.864283, 75.332836], 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
       }).addTo(map);
       L.marker([19.864283, 75.332836])
         .addTo(map)
-        .bindPopup('<strong>Jyoti Girls PG</strong><br/>0.8 km from Deogiri College<br/>Jyoti Nagar, Osmanpura')
+        .bindPopup(
+          '<strong>Jyoti Girls PG</strong><br/>' +
+          'Jyoti Nagar, Osmanpura<br/>' +
+          '0.8 km from Deogiri College'
+        )
         .openPopup();
     });
 
