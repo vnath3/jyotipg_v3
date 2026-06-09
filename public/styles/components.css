@@ -374,3 +374,21 @@ button[type="submit"]:disabled {
   cursor: not-allowed;
   transform: none;
 }
+
+/* Form validation */
+.input-error {
+  border-color: #E24B4A !important;
+  outline: none;
+}
+
+.input-error:focus {
+  border-color: #E24B4A !important;
+  box-shadow: 0 0 0 3px rgba(226, 75, 74, 0.12);
+}
+
+.field-error {
+  font-size: 0.78rem;
+  color: #E24B4A;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
