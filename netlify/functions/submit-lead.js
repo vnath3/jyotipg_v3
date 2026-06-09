@@ -24,8 +24,8 @@ exports.handler = async function (event) {
     };
   }
 
-  const submitUrl = process.env.UNI_LEADS_SUBMIT_URL || 'https://uni-leads.netlify.app/api/lead-submit';
-  const tenantSlug = process.env.UNI_LEADS_TENANT_SLUG || 'jyoti-pg';
+  const submitUrl = process.env.GSHEET_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbzzU_acZwfmI7ak9vGk6BvF9JU5rM2xGap3Cj6P659xVxKA3TEa2fMw-9jOinl4D9Mlpw/exec';
+  const tenantSlug = 'jyoti-pg';
   const debugLogs = process.env.LEAD_DEBUG_LOGS === '1';
 
   const maskSensitive = function (value) {
@@ -89,32 +89,47 @@ exports.handler = async function (event) {
   try {
     const response = await fetch(submitUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Tenant-Slug': tenantSlug
-      },
-      body: JSON.stringify(outboundPayload)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:       payload.name       || '',
+        phone:      payload.phone      || '',
+        form_type:  payload.form_type  || '',
+        source:     payload.source     || outboundPayload.source,
+        campaign:   payload.campaign   || outboundPayload.campaign,
+        tenant_slug: tenantSlug
+      })
     });
 
     const responseText = await response.text();
 
     if (debugLogs) {
-      console.log('lead-submit upstream response', {
+      console.log('gsheet-webhook response', {
         status: response.status,
         body: responseText
       });
     }
 
+    // Apps Script always returns 200 even on redirect — treat any
+    // 2xx or 3xx as success
+    const succeeded = response.status < 400;
+
     return {
-      statusCode: response.status,
+      statusCode: succeeded ? 200 : response.status,
       headers: corsHeaders,
-      body: responseText || ''
+      body: JSON.stringify({
+        status: succeeded ? 'ok' : 'error',
+        message: succeeded ? 'Lead captured' : responseText
+      })
     };
+
   } catch (error) {
+    if (debugLogs) {
+      console.log('gsheet-webhook error', error.message);
+    }
     return {
       statusCode: 502,
       headers: corsHeaders,
-      body: JSON.stringify({ error: 'upstream_error' })
+      body: JSON.stringify({ error: 'upstream_error', message: error.message })
     };
   }
 };
